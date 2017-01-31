@@ -1,6 +1,9 @@
 {
-	"GITHUB": {
-		"CLIENT_ID": "",
-		"CLIENT_SECRET": ""
+    "GITHUB": {
+        "CLIENT_TOKEN": "",
+		"DEPLOYER_TOKEN": ""
+    },
+	"WEB": {
+		"URL": "http://something:8080"
 	}
 }
