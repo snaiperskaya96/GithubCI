@@ -1,6 +1,6 @@
 const _ = require('../globals')._;
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync(__dirname + '/../config.json', 'utf8')).GITHUB;
+const config = require('../config').GITHUB;
 
 module.exports = (request, response, next) => {
 	const sha = request.params.sha;

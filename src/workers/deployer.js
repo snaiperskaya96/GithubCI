@@ -1,8 +1,8 @@
 const dockerClient = require('../clients/docker');
 const githubClient = require('../clients/github');
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync(__dirname + '/../config.json', 'utf8')).GITHUB;
-const configUrl = JSON.parse(fs.readFileSync(__dirname + '/../config.json', 'utf8')).WEB.URL;
+const config = require('../config').GITHUB;
+const configUrl = require('../config').WEB.URL;
 const _ = require('../globals')._;
 const stream = require('stream');
 const ansiUp = require('ansi_up');

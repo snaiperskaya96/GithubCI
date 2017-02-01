@@ -1,7 +1,6 @@
 const githubClient = require('../clients/github');
 const deployer = require('../workers/deployer');
-const fs = require('fs');
-const configUrl = JSON.parse(fs.readFileSync(__dirname + '/../config.json', 'utf8')).WEB.URL;
+const configUrl = require('../config').WEB.URL;
 const _ = require('../globals')._;
 
 module.exports = (request, response, next) => {

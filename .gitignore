@@ -12,4 +12,4 @@ npm-debug.log*
 .DS_Store
 .idea
 
-src/config.json
+src/data/config.json

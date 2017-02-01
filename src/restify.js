@@ -1,8 +1,7 @@
 const restify = require('restify');
 const pullRequestHandler = require('./handlers/pull_request');
 const logsHandler = require('./handlers/logs');
-const fs = require('fs');
-const config = JSON.parse(fs.readFileSync(__dirname + '/config.json', 'utf8')).WEB;
+const config = require('./config').WEB;
 
 let server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: true }));
