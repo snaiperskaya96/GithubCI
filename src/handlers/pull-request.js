@@ -11,7 +11,8 @@ module.exports = (request, response, next) => {
 	githubRepo.status(pullRequest.head.sha, {
 		'state': 'pending',
 		'target_url': configUrl + '/logs/' + pullRequest.head.sha, // Always prepend http/https
-		'description': 'Deployment in progress...'
+		'description': 'Deployment in progress...',
+		'context': 'continous-integration/gci'
 	});
 	_.defer(deployer(pullRequest.head));
 	response.send(200);

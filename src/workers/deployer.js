@@ -41,7 +41,8 @@ module.exports = pullRequest => {
 			let requestData = {
 				'state': 'success',
 				'target_url': configUrl + '/logs/' + pullRequest.sha, // Always prepend http/https
-				'description': 'Successfully deployed!'
+				'description': 'Successfully deployed!',
+				'context': 'continous-integration/gci'
 			};
 
 			if (data.StatusCode != 0) {
