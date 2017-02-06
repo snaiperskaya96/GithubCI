@@ -24,7 +24,7 @@ server.get('/logs/:sha/raw', rawLogsHandler);
 
 server.get('/logs/:sha', logsHandler);
 
-server.listen(8080, function() {
+server.listen(config.PORT, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
 

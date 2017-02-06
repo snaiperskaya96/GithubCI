@@ -4,6 +4,10 @@
 		"DEPLOYER_TOKEN": ""
     },
 	"WEB": {
-		"URL": "http://something:8080"
+		"PORT": "8080",
+		"URL": "http://something.com"
+	},
+	"DEPLOYMENT": {
+		"DOCKER_IMAGE": "ubuntu:latest"
 	}
 }

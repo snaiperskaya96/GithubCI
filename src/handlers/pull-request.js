@@ -1,6 +1,6 @@
 const githubClient = require('../clients/github');
 const deployer = require('../workers/deployer');
-const configUrl = require('../config').WEB.URL;
+const webConfig = require('../config').WEB;
 const _ = require('../globals')._;
 
 module.exports = (request, response, next) => {
@@ -10,7 +10,7 @@ module.exports = (request, response, next) => {
 	const githubRepo = githubClient.repo(repo.full_name);
 	githubRepo.status(pullRequest.head.sha, {
 		'state': 'pending',
-		'target_url': configUrl + '/logs/' + pullRequest.head.sha, // Always prepend http/https
+		'target_url': webConfig.URL + ':' + webConfig.PORT + '/logs/' + pullRequest.head.sha,
 		'description': 'Deployment in progress...',
 		'context': 'continous-integration/gci'
 	});

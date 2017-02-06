@@ -23,6 +23,8 @@ function readConfig() {
 	fileConfig.GITHUB.CLIENT_TOKEN = process.env.GCI_CLIENT_TOKEN || fileConfig.GITHUB.CLIENT_TOKEN;
 	fileConfig.GITHUB.DEPLOYER_TOKEN = process.env.GCI_DEPLOYER_TOKEN || fileConfig.GITHUB.DEPLOYER_TOKEN;
 	fileConfig.WEB.URL = process.env.GCI_URL || fileConfig.WEB.URL;
+	fileConfig.WEB.PORT = process.env.GCI_PORT || fileConfig.WEB.PORT;
+	fileConfig.DEPLOYMENT.DOCKER_IMAGE = process.env.GCI_DOCKER_IMAGE || fileConfig.DEPLOYMENT.DOCKER_IMAGE;
 
 	return fileConfig;
 }
