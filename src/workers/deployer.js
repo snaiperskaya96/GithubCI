@@ -2,7 +2,8 @@ const dockerClient = require('../clients/docker');
 const githubClient = require('../clients/github');
 const fs = require('fs');
 const config = require('../config').GITHUB;
-const configUrl = require('../config').WEB.URL;
+const webConfig = require('../config').WEB;
+const dockerImage = require('../config').DEPLOYMENT.DOCKER_IMAGE;
 const _ = require('../globals')._;
 const stream = require('stream');
 const ansiUp = require('ansi_up');
@@ -33,14 +34,14 @@ module.exports = pullRequest => {
 		.replace('$DEPLOYER_TOKEN$', config.DEPLOYER_TOKEN)
 		.replace('$REPO_NAME$', pullRequest.repo.full_name)
 		.replace('$COMMIT_SHA$', pullRequest.sha);
-	dockerClient.run('ubuntu', deployScript.trim().split('\n'), streamHandler, (error, data, container) => {
+	dockerClient.run(dockerImage, deployScript.trim().split('\n'), streamHandler, (error, data, container) => {
 		if (error) {
 			console.log(error);
 		}
 		if (data) {
 			let requestData = {
 				'state': 'success',
-				'target_url': configUrl + '/logs/' + pullRequest.sha, // Always prepend http/https
+				'target_url': webConfig.URL + ':' + webConfig.PORT + '/logs/' + pullRequest.sha,
 				'description': 'Successfully deployed!',
 				'context': 'continous-integration/gci'
 			};

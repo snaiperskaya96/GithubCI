@@ -1,7 +1,7 @@
 const config = require('../config').WEB;
 
 module.exports = (request, response, next) => {
-	let url = config.URL + '/logs/' + request.params.sha + '/raw';
+	let url = config.URL + ':' + config.PORT + '/logs/' + request.params.sha + '/raw';
 	const body = `
 		<html>
 			<head></head>
