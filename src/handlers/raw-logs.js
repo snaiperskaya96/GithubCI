@@ -5,6 +5,10 @@ const config = require('../config').GITHUB;
 module.exports = (request, response, next) => {
 	const sha = request.params.sha;
 	let log = null;
+	if (!sha.match(/[0-9a-f]{40}/)) {
+		response.send(200);
+		return next();
+	}
 	try {
 		log = fs.readFileSync(__dirname + '/../logs/' + sha, 'utf8');
 	} catch (exception) {
